@@ -3,10 +3,7 @@ package com.example.demo.domain.wiseSaying.controller;
 import com.example.demo.domain.wiseSaying.entity.WiseSaying;
 import com.example.demo.domain.wiseSaying.service.WiseSayingService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,11 +26,14 @@ public class WiseSayingController {
         return wiseSayingService.write(content, author);
     }
 
-    //  GET  /wiseSayings  -> 명언들을 가져와라
-    //  GET  /wiseSayings/1 -> 명언들 중에서 1번 가져와라
-
     @GetMapping("/wiseSayings/{id}")
-    public WiseSaying getItem1(@PathVariable int id) {
+    public WiseSaying getItem(@PathVariable int id) {
          return wiseSayingService.getItem(id).orElse(null);
     }
+
+    @GetMapping("/wiseSayings/{id}/delete")
+    public boolean deleteItem(@PathVariable int id) {
+        return wiseSayingService.deleteById(id);
+    }
+
 }
