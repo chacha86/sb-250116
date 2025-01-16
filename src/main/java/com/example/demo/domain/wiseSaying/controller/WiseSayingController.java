@@ -18,7 +18,7 @@ public class WiseSayingController {
         return wiseSayingService.getAllItems();
     }
 
-    @GetMapping("/wiseSaying/write")
+    @GetMapping("/wiseSayings/write")
     public WiseSaying writeWiseSaying(String content, @RequestParam(defaultValue = "no name") String author) {
         System.out.println("content = " + content);
         System.out.println("author = " + author);
